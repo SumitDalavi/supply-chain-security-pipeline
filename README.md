@@ -70,6 +70,87 @@ Most DevSecOps demos stop at "run Trivy in CI." This project goes three tiers de
 | cosign over Docker Content Trust | cosign is keyless via Sigstore/Fulcio, aligning with zero-trust principles |
 | OPA + Kyverno (both) | OPA for CI pipeline gates, Kyverno for Kubernetes admission control — different enforcement points |
 
+
+## ðŸ“‹ Prerequisites
+
+| Tool | Version | Purpose |
+|------|---------|---------|
+| [GitHub Account](https://github.com/) | â€” | Repository hosting & Actions |
+| [Docker](https://www.docker.com/) | >= 24.x | Container builds |
+| [Cosign](https://github.com/sigstore/cosign) | >= 2.x | Container image signing |
+| [Syft](https://github.com/anchore/syft) | Latest | SBOM generation |
+| [Grype](https://github.com/anchore/grype) | Latest | Vulnerability scanning |
+| [kubectl](https://kubernetes.io/docs/tasks/tools/) | >= 1.28 | K8s CLI (for Kyverno policy) |
+
+## ðŸš€ Step-by-Step Setup
+
+### Step 1: Fork and clone
+```bash
+git clone https://github.com/SumitDalavi/supply-chain-security-pipeline.git
+cd supply-chain-security-pipeline
+```
+
+### Step 2: Configure GitHub Secrets
+In **Settings â†’ Secrets and Variables â†’ Actions**:
+
+| Secret | Value |
+|--------|-------|
+| `COSIGN_PRIVATE_KEY` | Your Cosign private key |
+| `COSIGN_PASSWORD` | Cosign key password |
+| `DOCKER_REGISTRY` | Container registry URL |
+
+### Step 3: Run the pipeline locally (optional)
+```bash
+# Generate an SBOM
+./scripts/generate-sbom.sh app/
+
+# Scan for vulnerabilities
+./scripts/scan-vulnerabilities.sh app/
+
+# Sign a container image
+./scripts/sign-image.sh myregistry/myimage:latest
+```
+
+## ðŸ§ª Usage & Demo
+
+### Automated Pipeline (GitHub Actions)
+Push code to trigger the `supply-chain-security.yaml` workflow:
+```bash
+git add .
+git commit -m "feat: new feature"
+git push origin main
+```
+
+The pipeline will:
+1. **Build** the container image
+2. **Generate SBOM** (Software Bill of Materials) using Syft
+3. **Scan vulnerabilities** using Grype
+4. **Sign the image** using Cosign
+5. **Verify the signature** before deployment
+
+### Apply Kyverno image verification policy
+```bash
+# On your K8s cluster, enforce signed-image-only policy
+kubectl apply -f policies/kyverno/require-signed-images.yaml
+
+# Try deploying an unsigned image â€” should be BLOCKED
+kubectl run unsigned --image=nginx:latest
+# Expected: admission denied
+
+# Deploy a signed image â€” should be ALLOWED
+kubectl run signed --image=myregistry/myimage:latest
+```
+
+## âœ… Verification
+
+| Check | Command | Expected |
+|-------|---------|----------|
+| SBOM generated | `./scripts/generate-sbom.sh` | SBOM JSON output |
+| Scan clean | `./scripts/scan-vulnerabilities.sh` | Vulnerability report |
+| Image signed | `cosign verify <image>` | Signature verified |
+| Policy active | `kubectl get clusterpolicies` | require-signed-images |
+| Unsigned blocked | Deploy unsigned image | Admission denied |
+
 ## 👨‍💻 Author
 
 *Built to demonstrate end-to-end software supply-chain security beyond SAST/DAST, targeting the NIST SSDF and SLSA compliance frameworks.*
