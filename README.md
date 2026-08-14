@@ -71,7 +71,7 @@ Most DevSecOps demos stop at "run Trivy in CI." This project goes three tiers de
 | OPA + Kyverno (both) | OPA for CI pipeline gates, Kyverno for Kubernetes admission control — different enforcement points |
 
 
-## ðŸ“‹ Prerequisites
+## 📋 Prerequisites
 
 | Tool | Version | Purpose |
 |------|---------|---------|
@@ -82,7 +82,7 @@ Most DevSecOps demos stop at "run Trivy in CI." This project goes three tiers de
 | [Grype](https://github.com/anchore/grype) | Latest | Vulnerability scanning |
 | [kubectl](https://kubernetes.io/docs/tasks/tools/) | >= 1.28 | K8s CLI (for Kyverno policy) |
 
-## ðŸš€ Step-by-Step Setup
+## 🚀 Step-by-Step Setup
 
 ### Step 1: Fork and clone
 ```bash
@@ -111,7 +111,7 @@ In **Settings â†’ Secrets and Variables â†’ Actions**:
 ./scripts/sign-image.sh myregistry/myimage:latest
 ```
 
-## ðŸ§ª Usage & Demo
+## 🧪 Usage & Demo
 
 ### Automated Pipeline (GitHub Actions)
 Push code to trigger the `supply-chain-security.yaml` workflow:
@@ -141,7 +141,7 @@ kubectl run unsigned --image=nginx:latest
 kubectl run signed --image=myregistry/myimage:latest
 ```
 
-## âœ… Verification
+## ✅ Verification
 
 | Check | Command | Expected |
 |-------|---------|----------|
@@ -153,4 +153,9 @@ kubectl run signed --image=myregistry/myimage:latest
 
 ## 👨‍💻 Author
 
-*Built to demonstrate end-to-end software supply-chain security beyond SAST/DAST, targeting the NIST SSDF and SLSA compliance frameworks.*
+**Sumit Dalavi** — Senior DevSecOps / Platform Engineer
+[GitHub](https://github.com/SumitDalavi) | [LinkedIn](https://in.linkedin.com/in/sumit-dalavi-762838129)
+
+---
+
+*Built with a focus on production-grade patterns, not toy demos.*
