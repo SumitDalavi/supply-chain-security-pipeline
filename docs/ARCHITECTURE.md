@@ -1,5 +1,17 @@
 # Architecture: Supply-Chain Security Pipeline
 
+## System Diagram
+The following Mermaid.js sequence diagram maps the core workflow and interactions:
+
+```mermaid
+sequenceDiagram
+    Build->>Image: Build Docker
+Syft->>Image: Generate SBOM
+Cosign->>Image: Sign Image
+Registry->>K8s: Deploy (verified)
+```
+
+
 ## The Supply-Chain Threat Model
 Modern attacks target the software supply chain: compromised dependencies (SolarWinds), malicious packages (event-stream), and tampered build systems. This pipeline addresses each vector.
 
