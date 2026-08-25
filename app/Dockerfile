@@ -1,8 +1,2 @@
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install --production
-COPY . .
-EXPOSE 3000
-USER node
-CMD ["node", "index.js"]
+FROM alpine:3.18
+CMD ["echo", "Hello, Secure Supply Chain!"]
