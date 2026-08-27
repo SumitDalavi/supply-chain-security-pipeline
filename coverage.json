@@ -1,0 +1,118 @@
+{
+  "files": {
+    "policy\\slsa_level2.rego": {
+      "covered": [
+        {
+          "start": {
+            "row": 7
+          },
+          "end": {
+            "row": 9
+          }
+        },
+        {
+          "start": {
+            "row": 12
+          },
+          "end": {
+            "row": 14
+          }
+        },
+        {
+          "start": {
+            "row": 18
+          },
+          "end": {
+            "row": 18
+          }
+        },
+        {
+          "start": {
+            "row": 23
+          },
+          "end": {
+            "row": 23
+          }
+        },
+        {
+          "start": {
+            "row": 27
+          },
+          "end": {
+            "row": 30
+          }
+        }
+      ],
+      "not_covered": [
+        {
+          "start": {
+            "row": 17
+          },
+          "end": {
+            "row": 17
+          }
+        },
+        {
+          "start": {
+            "row": 19
+          },
+          "end": {
+            "row": 19
+          }
+        },
+        {
+          "start": {
+            "row": 22
+          },
+          "end": {
+            "row": 22
+          }
+        },
+        {
+          "start": {
+            "row": 24
+          },
+          "end": {
+            "row": 24
+          }
+        }
+      ],
+      "covered_lines": 12,
+      "not_covered_lines": 4,
+      "coverage": 75
+    },
+    "policy\\slsa_level2_test.rego": {
+      "covered": [
+        {
+          "start": {
+            "row": 6
+          },
+          "end": {
+            "row": 7
+          }
+        },
+        {
+          "start": {
+            "row": 15
+          },
+          "end": {
+            "row": 16
+          }
+        },
+        {
+          "start": {
+            "row": 23
+          },
+          "end": {
+            "row": 24
+          }
+        }
+      ],
+      "covered_lines": 6,
+      "coverage": 100
+    }
+  },
+  "covered_lines": 18,
+  "not_covered_lines": 4,
+  "coverage": 81.81818181818181
+}
