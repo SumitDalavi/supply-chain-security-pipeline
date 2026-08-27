@@ -4,26 +4,22 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
 jobs:
   static-analysis:
     name: Static Analysis & Policy Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install Dependencies
-        run: pip install -r requirements.txt --ignore-installed || echo "No requirements.txt"
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run Tests
         run: pytest tests/ -v --tb=short || echo "No tests found"
-      - name: OPA Policy Check
+      - name: OPA Policy Syntax Check
         run: |
-          curl -L -o opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64
+          curl -sL -o opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64
           chmod +x opa && sudo mv opa /usr/local/bin/
-          if [ -d "policies" ]; then
-            opa check policies/
-            echo "OPA policy syntax OK"
-          fi
+          if [ -d "policies" ]; then opa check policies/ && echo "OPA policy syntax OK"; fi
