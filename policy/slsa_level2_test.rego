@@ -1,4 +1,6 @@
 package slsa_test
+import future.keywords.if
+import future.keywords.in
 import data.slsa
 
 test_pass_compliant_build if {
