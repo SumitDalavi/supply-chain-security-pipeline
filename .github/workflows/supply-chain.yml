@@ -19,7 +19,7 @@ jobs:
       - name: Run Python Tests
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pytest tests/ -v --tb=short
+          pip install pytest && pytest tests/ -v --tb=short
 
   trivy-repo-scan:
     name: Repository Vulnerability Scan
