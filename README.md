@@ -1,5 +1,7 @@
 # Supply-Chain Security Pipeline 🔗🛡️
 
+[![CI](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/supply-chain.yml/badge.svg)](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/supply-chain.yml)
+
 > **Maturity:** Lab / Reference Implementation
 > _A robust CI/CD pipeline implementing SBOM generation, vulnerability gating, container image signing, build provenance attestation, and policy-as-code enforcement._
 
