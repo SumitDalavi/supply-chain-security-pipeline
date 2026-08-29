@@ -163,7 +163,7 @@ jobs:
       - name: Evaluate Policy
         run: |
           echo '{"critical_cves": 0, "image_signed": true, "sbom_exists": true}' > input.json
-          opa eval -i input.json -d policies/opa/ "data.supplychain.allow" --fail-defined
+          opa eval -i input.json -d policies/opa/ "data.supplychain.deny[x]" --fail-defined
 
   verify-signatures:
     name: Verify Signatures
