@@ -138,8 +138,16 @@ kubectl apply -f policies/kyverno/require-signed-images.yaml
 kubectl run unsigned --image=nginx:latest
 # Expected: admission denied
 
-# Deploy a signed image â€” should be ALLOWED
+# Deploy a signed image — should be ALLOWED
 kubectl run signed --image=myregistry/myimage:latest
+```
+
+## 🧪 Real End-to-End E2E Test (Local)
+You can run a complete simulated pipeline locally using Docker containers for the required tools (`syft`, `grype`, `cosign`, `opa`).
+This script builds an image, pushes it to the ephemeral `ttl.sh` registry, generates an SBOM, scans for vulnerabilities, signs the image (keyless), and evaluates the OPA policy against the SBOM.
+
+```powershell
+.\scripts\test_pipeline_local_docker.ps1
 ```
 
 ## ✅ Verification

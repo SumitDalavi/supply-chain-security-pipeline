@@ -1,2 +1,3 @@
 FROM alpine:3.18
-CMD ["echo", "Hello, Secure Supply Chain!"]
+RUN apk add --no-cache curl
+CMD echo Hello
