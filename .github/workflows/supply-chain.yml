@@ -101,6 +101,7 @@ jobs:
           image: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           fail-build: true
           severity-cutoff: critical
+          only-fixed: true
 
   scan-trivy:
     name: Image Scan (Trivy)
