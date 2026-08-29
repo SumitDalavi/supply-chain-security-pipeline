@@ -1,7 +1,7 @@
 # Supply-Chain Security Pipeline 🔗🛡️
 
 > **Maturity:** Lab / Reference Implementation
-> _A production-grade CI/CD pipeline implementing SBOM generation, vulnerability gating, container image signing, build provenance attestation, and policy-as-code enforcement._
+> _A robust CI/CD pipeline implementing SBOM generation, vulnerability gating, container image signing, build provenance attestation, and policy-as-code enforcement._
 
 ## The Problem
 
@@ -159,7 +159,7 @@ kubectl run signed --image=myregistry/myimage:latest
 
 ---
 
-*Built with a focus on production-grade patterns, not toy demos.*
+*Built with a focus on robust patterns, not toy demos.*
 
 ## 📚 Documentation
 

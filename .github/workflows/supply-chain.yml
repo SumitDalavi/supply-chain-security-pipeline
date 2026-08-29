@@ -19,7 +19,7 @@ jobs:
       - name: Run Python Tests
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pytest tests/ -v --tb=short || echo "No tests found"
+          pytest tests/ -v --tb=short
 
   trivy-repo-scan:
     name: Repository Vulnerability Scan
@@ -45,7 +45,7 @@ jobs:
           curl -sL -o opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64
           chmod +x opa && sudo mv opa /usr/local/bin/
       - name: Check OPA Policies
-        run: opa check policies/ || echo "OPA check failed but continuing"
+        run: opa check policies/
 
   build-image:
     name: Build Container Image
@@ -163,7 +163,7 @@ jobs:
       - name: Evaluate Policy
         run: |
           echo '{"critical_cves": 0, "image_signed": true, "sbom_exists": true}' > input.json
-          opa eval -i input.json -d policies/opa/ "data.supplychain.allow" --fail-defined || echo "OPA Gate Passed"
+          opa eval -i input.json -d policies/opa/ "data.supplychain.allow" --fail-defined
 
   verify-signatures:
     name: Verify Signatures
@@ -176,7 +176,7 @@ jobs:
         env:
           COSIGN_EXPERIMENTAL: "1"
         run: |
-          cosign verify             --certificate-oidc-issuer="https://token.actions.githubusercontent.com"             --certificate-identity="https://github.com/${{ github.repository }}/.github/workflows/supply-chain.yml@refs/heads/${{ github.ref_name }}"             ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} || echo "Verification successful"
+          cosign verify             --certificate-oidc-issuer="https://token.actions.githubusercontent.com"             --certificate-identity="https://github.com/${{ github.repository }}/.github/workflows/supply-chain.yml@refs/heads/${{ github.ref_name }}"             ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
   compliance-report:
     name: Security & Compliance Report
