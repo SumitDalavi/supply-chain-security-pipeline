@@ -1,6 +1,7 @@
 # Supply-Chain Security Pipeline 🔗🛡️
 
-> A production-grade CI/CD pipeline implementing SBOM generation, vulnerability gating, container image signing, build provenance attestation, and policy-as-code enforcement — the complete software supply-chain security stack.
+> **Maturity:** Lab / Reference Implementation
+> _A production-grade CI/CD pipeline implementing SBOM generation, vulnerability gating, container image signing, build provenance attestation, and policy-as-code enforcement._
 
 ## The Problem
 
@@ -159,6 +160,25 @@ kubectl run signed --image=myregistry/myimage:latest
 ---
 
 *Built with a focus on production-grade patterns, not toy demos.*
+
+## 📚 Documentation
+
+- [Architecture](docs/ARCHITECTURE.md) — System diagram and component details
+- [Runbook](docs/runbook.md) — Setup, commands, and expected outputs
+- [Decisions](docs/decisions.md) — ADRs for signing strategies
+- [Changelog](docs/changelog.md) — Change history
+
+## Mock Boundaries (Honest Scope)
+
+| What | Status | Details |
+|---|---|---|
+| Image Build & SBOM | **Real** | Docker Buildx and Syft execute locally. |
+| Cosign Signing | **Simulated** | E2E demo uses generated artifacts rather than querying a real Rekor transparency log. |
+| OPA Policy | **Real** | Local `opa eval` executes Rego policies against artifacts. |
+
+## 🔗 Related Projects
+
+- [`k8s-policy-as-code`](../k8s-policy-as-code/) — Kyverno policies that complement these CI gates.
 
 ## CI & Reliability Updates (August 2026)
 
