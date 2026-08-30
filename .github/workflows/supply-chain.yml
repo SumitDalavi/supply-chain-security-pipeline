@@ -102,6 +102,8 @@ jobs:
           fail-build: true
           severity-cutoff: critical
           only-fixed: true
+        env:
+          GRYPE_DB_MAX_ALLOWED_BUILT_AGE: "8760h"
 
   scan-trivy:
     name: Image Scan (Trivy)
