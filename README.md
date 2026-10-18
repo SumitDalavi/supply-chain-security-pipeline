@@ -1,5 +1,8 @@
 # Supply-Chain Security Pipeline 🔗🛡️
 
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/supply-chain-security-pipeline?color=blue&logo=github)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
+
 [![CI](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/supply-chain.yml/badge.svg)](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/supply-chain.yml)
 
 > **Maturity:** Lab / Reference Implementation
@@ -195,3 +198,24 @@ This script builds an image, pushes it to the ephemeral `ttl.sh` registry, gener
 - **CI Pipeline Remediation:** Successfully resolved all CI/CD pipeline failures.
 - **Specific Fix:** Added Docker Buildx setup step in GitHub Actions to support image attestations (provenance/sbom).
 - **Status:** 🟩 Passing
+
+## Release & Verification
+
+The project includes an automated DevSecOps release pipeline (`.github/workflows/release.yml`) triggered on semantic version tags (`v*.*.*`).
+
+Each release automatically:
+1. Executes test suite gates.
+2. Builds the container image.
+3. Performs vulnerability scanning via Trivy.
+4. Generates an SPDX SBOM (`sbom.spdx.json`) using Anchore Syft.
+5. Publishes a GitHub Release with attached SBOM.
+
+### Verifying the Release
+```bash
+# Verify release via GitHub CLI
+gh release view v0.1.0 --repo SumitDalavi/supply-chain-security-pipeline
+
+# Download and inspect SBOM
+gh release download v0.1.0 --repo SumitDalavi/supply-chain-security-pipeline --pattern "sbom.spdx.json"
+cat sbom.spdx.json | jq .
+```
