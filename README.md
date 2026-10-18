@@ -1,6 +1,10 @@
 # Supply-Chain Security Pipeline 🔗🛡️
 
 [![Release](https://img.shields.io/github/v/release/SumitDalavi/supply-chain-security-pipeline?color=blue&logo=github)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
+[![Release Workflow](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/release.yml)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
+
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/supply-chain-security-pipeline?color=blue&logo=github)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
 [![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
 
 [![CI](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/supply-chain.yml/badge.svg)](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/supply-chain.yml)
@@ -199,7 +203,7 @@ This script builds an image, pushes it to the ephemeral `ttl.sh` registry, gener
 - **Specific Fix:** Added Docker Buildx setup step in GitHub Actions to support image attestations (provenance/sbom).
 - **Status:** 🟩 Passing
 
-## Release & Verification
+## Release & Security Verification
 
 The project includes an automated DevSecOps release pipeline (`.github/workflows/release.yml`) triggered on semantic version tags (`v*.*.*`).
 
@@ -219,3 +223,10 @@ gh release view v0.1.0 --repo SumitDalavi/supply-chain-security-pipeline
 gh release download v0.1.0 --repo SumitDalavi/supply-chain-security-pipeline --pattern "sbom.spdx.json"
 cat sbom.spdx.json | jq .
 ```
+
+## Documentation
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Runbook](docs/runbook.md)
+- [Decisions](docs/decisions.md)
+- [Changelog](docs/changelog.md)
