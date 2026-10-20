@@ -1,13 +1,11 @@
 # Supply-Chain Security Pipeline 🔗🛡️
 
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/supply-chain-security-pipeline?color=blue&logo=github)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
+[![CI Pipeline](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/supply-chain-security-pipeline?color=0969da&label=release&logo=github)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
 [![Release Workflow](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/release.yml)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
-
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/supply-chain-security-pipeline?color=blue&logo=github)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases)
-
-[![CI](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/supply-chain.yml/badge.svg)](https://github.com/SumitDalavi/supply-chain-security-pipeline/actions/workflows/supply-chain.yml)
+[![GHCR Container](https://img.shields.io/badge/ghcr.io-v0.2.0-blue?logo=docker&logoColor=white)](https://github.com/SumitDalavi/supply-chain-security-pipeline/pkgs/container/supply-chain-security-pipeline)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases/tag/v0.2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > **Maturity:** Lab / Reference Implementation
 > _A robust CI/CD pipeline implementing SBOM generation, vulnerability gating, container image signing, build provenance attestation, and policy-as-code enforcement._
@@ -79,7 +77,6 @@ Most DevSecOps demos stop at "run Trivy in CI." This project goes three tiers de
 | Grype + Trivy (both) | Demonstrates defense-in-depth; different scanners catch different CVEs |
 | cosign over Docker Content Trust | cosign is keyless via Sigstore/Fulcio, aligning with zero-trust principles |
 | OPA + Kyverno (both) | OPA for CI pipeline gates, Kyverno for Kubernetes admission control — different enforcement points |
-
 
 ## 📋 Prerequisites
 
