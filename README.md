@@ -218,13 +218,7 @@ Enterprise deployment with production-grade backends, security scans, and contai
 
 - [`k8s-policy-as-code`](../k8s-policy-as-code/) — Kyverno policies that complement these CI gates.
 
-## CI & Reliability Updates (August 2026)
-
-- **CI Pipeline Remediation:** Successfully resolved all CI/CD pipeline failures.
-- **Specific Fix:** Added Docker Buildx setup step in GitHub Actions to support image attestations (provenance/sbom).
-- **Status:** 🟩 Passing
-
-## Release & Security Verification
+## 🔒 Release & Security Verification
 
 The project includes an automated DevSecOps release pipeline (`.github/workflows/release.yml`) triggered on semantic version tags (`v*.*.*`).
 
@@ -238,16 +232,18 @@ Each release automatically:
 ### Verifying the Release
 ```bash
 # Verify release via GitHub CLI
-gh release view v0.1.0 --repo SumitDalavi/supply-chain-security-pipeline
+gh release view v0.2.0 --repo SumitDalavi/supply-chain-security-pipeline
 
 # Download and inspect SBOM
-gh release download v0.1.0 --repo SumitDalavi/supply-chain-security-pipeline --pattern "sbom.spdx.json"
+gh release download v0.2.0 --repo SumitDalavi/supply-chain-security-pipeline --pattern "sbom.spdx.json"
 cat sbom.spdx.json | jq .
 ```
 
-## Documentation
+## 👨‍💻 Author
 
-- [Architecture](docs/ARCHITECTURE.md)
-- [Runbook](docs/runbook.md)
-- [Decisions](docs/decisions.md)
-- [Changelog](docs/changelog.md)
+**Sumit Dalavi** — Senior DevSecOps / Platform Engineer  
+[GitHub](https://github.com/SumitDalavi) | [LinkedIn](https://in.linkedin.com/in/sumit-dalavi-762838129)
+
+---
+*Built with a focus on robust patterns, not toy demos.*
+
