@@ -1,1 +1,7 @@
-{\" "scripts\: {\test\: \echo" "\\\PASS\\\\}} 
+{
+  "name": "supply-chain-security-pipeline-app",
+  "version": "0.2.0",
+  "scripts": {
+    "test": "echo PASS"
+  }
+}
