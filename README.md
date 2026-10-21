@@ -7,8 +7,7 @@
 [![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/supply-chain-security-pipeline/releases/tag/v0.2.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **Maturity:** Lab / Reference Implementation
-> _A robust CI/CD pipeline implementing SBOM generation, vulnerability gating, container image signing, build provenance attestation, and policy-as-code enforcement._
+> An end-to-end CI/CD security pipeline implementing SBOM generation, vulnerability gating, container image signing, build provenance attestation, and policy-as-code enforcement.
 
 ## The Problem
 
